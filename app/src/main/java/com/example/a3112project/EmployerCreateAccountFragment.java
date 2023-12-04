@@ -77,6 +77,7 @@ public class EmployerCreateAccountFragment extends Fragment {
                     if(uniqueEmployer)
                     {
                         Employer addingEmployer = new Employer(password,employerName, employees, requests);
+                        addingEmployer.setTotalAmountPaid(0);
                         MainActivity.employers.add(addingEmployer);
                         //when the employer information is correct then go to the dashboard
                         mListener.AuthSuccessfulCreateAccount();

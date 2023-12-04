@@ -49,6 +49,11 @@ public class EmployerDashboardFragment extends Fragment {
         binding.recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
+        //amount total amount paid
+
+        String money =String.format("%.2f", MainActivity.currentEmployer.getTotalAmountPaid());
+        binding.textView4.setText("Total Amount Paid: $"+ money);
+
 
         binding.buttonEmployerReq.setOnClickListener(new View.OnClickListener() {
             @Override

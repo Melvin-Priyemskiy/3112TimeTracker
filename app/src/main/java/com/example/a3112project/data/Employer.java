@@ -8,6 +8,7 @@ public class Employer
     private String companyName;
     private ArrayList<Employee> employees;
     private ArrayList<Request> requests;
+    private double totalAmountPaid;
 
     public Employer() {
     }
@@ -18,6 +19,14 @@ public class Employer
         this.companyName = companyName;
         this.employees = employees;
         this.requests = requests;
+    }
+
+    public double getTotalAmountPaid() {
+        return totalAmountPaid;
+    }
+
+    public void setTotalAmountPaid(double totalAmountPaid) {
+        this.totalAmountPaid = totalAmountPaid;
     }
 
     public ArrayList<Request> getRequests() {

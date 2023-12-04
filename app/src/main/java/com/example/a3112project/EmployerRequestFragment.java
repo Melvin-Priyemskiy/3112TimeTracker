@@ -135,6 +135,21 @@ public class EmployerRequestFragment extends Fragment {
                     public void onClick(View view) {
                         mRequest.setReviewed("Accepted");
                         mRequests.remove(mRequest);
+                        double total = MainActivity.currentEmployer.getTotalAmountPaid();
+                        boolean employeeExists = false;
+
+                        int x = MainActivity.currentEmployer.getEmployees().size();
+                        for (int i = 0; i < x; i++) {
+                            if(MainActivity.currentEmployer.getEmployees().get(i) == mRequest.getEmployee()){
+                                employeeExists = true;
+                            }
+                        }
+
+                        if(employeeExists)
+                        {
+                            total = total + mRequest.getHoursRequested().getTotalMoneyRequested();
+                            MainActivity.currentEmployer.setTotalAmountPaid(total);
+                        }
                         adapter.notifyDataSetChanged();
                     }
                 });
