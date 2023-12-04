@@ -8,6 +8,8 @@ public class Employee {
     private String password;
     private double hourlyWage;
 
+    private Employer employer;
+
     private String username;
     private String employeeName;
     private String employeeID;
@@ -65,6 +67,14 @@ public class Employee {
 
     public String getEmployeeName() {
         return employeeName;
+    }
+
+    public Employer getEmployer() {
+        return employer;
+    }
+
+    public void setEmployer(Employer employer) {
+        this.employer = employer;
     }
 
     @Override

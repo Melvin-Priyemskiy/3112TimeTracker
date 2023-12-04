@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Request {
     private Employee employee;
-    private boolean reviewed;
-    private int hoursRequested;
+    private String reviewed;
+    private Week hoursRequested;
 
     public Request() {
     }
@@ -18,19 +18,28 @@ public class Request {
         this.employee = employee;
     }
 
-    public boolean isReviewed() {
+    public String getReviewed() {
         return reviewed;
     }
 
-    public void setReviewed(boolean reviewed) {
+    public void setReviewed(String reviewed) {
         this.reviewed = reviewed;
     }
 
-    public int getHoursRequested() {
+    public Week getHoursRequested() {
         return hoursRequested;
     }
 
-    public void setHoursRequested(int hoursRequested) {
+    public void setHoursRequested(Week hoursRequested) {
         this.hoursRequested = hoursRequested;
+    }
+
+    @Override
+    public String toString() {
+        return "Request{" +
+                "employee=" + employee +
+                ", reviewed='" + reviewed + '\'' +
+                ", hoursRequested=" + hoursRequested.toString() +
+                '}';
     }
 }

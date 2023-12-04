@@ -65,10 +65,25 @@ public class EmployerCreateAccountFragment extends Fragment {
                     Toast.makeText(getActivity(), "please fill out the fields", Toast.LENGTH_LONG).show();
                 }
                 else{
-                    Employer addingEmployer = new Employer(password,employerName, employees, requests);
-                    MainActivity.employers.add(addingEmployer);
-                    //when the employer information is correct then go to the dashboard
-                    mListener.AuthSuccessfulCreateAccount();
+                    //Make sure employername is unique
+                    int x = MainActivity.employers.size();
+                    boolean uniqueEmployer = true;
+                    for (int i = 0; i < x; i++) {
+                        if(employerName.compareToIgnoreCase(MainActivity.employers.get(i).getCompanyName()) == 0){
+                            uniqueEmployer = false;
+
+                        }
+                    }
+                    if(uniqueEmployer)
+                    {
+                        Employer addingEmployer = new Employer(password,employerName, employees, requests);
+                        MainActivity.employers.add(addingEmployer);
+                        //when the employer information is correct then go to the dashboard
+                        mListener.AuthSuccessfulCreateAccount();
+                    }
+                    else{
+                        Toast.makeText(getActivity(), "Company name is not unique", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });

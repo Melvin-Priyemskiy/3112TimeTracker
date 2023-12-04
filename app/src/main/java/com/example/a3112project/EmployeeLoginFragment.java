@@ -49,23 +49,55 @@ public class EmployeeLoginFragment extends Fragment {
         binding.buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String employerName = binding.editTextEmployeeUsername.getText().toString();
+                String employeeID = binding.editTextEmployeeID.getText().toString();
                 String password = binding.editTextPassword.getText().toString();
-                //String p = MainActivity.employers.get(0).getCompanyName();
-                Log.d("TAG", "testing    " + MainActivity.employers.size());
-             //   Log.d("TAG", "this is company name:  " + p);
-//                if(password.isEmpty() || employerName.isEmpty()){
-//                    Toast.makeText(getActivity(), "please fill out the fields", Toast.LENGTH_LONG);
-//                }
-//                else{
-//                    int x = MainActivity.employers.size();
-//                    for (int i = 0; i < x; i++) {
-//                        String matchingName = MainActivity.employers.get(i).getCompanyName();
-//                        String matchPass = MainActivity.employers.get(i).getPassword();
-//                        if(matchPass.compareTo(employerName) ==)
-//                    }
-//                    mListener.EmployeeLoginSuccessful();
-//                }
+                String companyName = binding.editTextCompanyNameEmployee.getText().toString();
+                boolean companyExists = false;
+                Employer chosenEmployer = null;
+
+
+                Log.d("TAG", "companyName: " + companyName);
+                Log.d("TAG", "login entered company name: " + employeeID);
+                Log.d("TAG", "login entered password: " + password);
+
+                if(password.isBlank() || employeeID.isBlank() || companyName.isBlank()){
+                    Toast.makeText(getActivity(), "please fill out the fields", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    //checking that the company name exists
+                    int x = MainActivity.employers.size();
+
+                    for (int i = 0; i < x; i++)
+                    {
+                        if(companyName.compareToIgnoreCase(MainActivity.employers.get(i).getCompanyName()) == 0){
+                            companyExists = true;
+                            chosenEmployer = MainActivity.employers.get(i);
+                        }
+                    }
+
+                }
+                if(companyExists)
+                {
+                    //checking if the employee is in the system
+                    int x = chosenEmployer.getEmployees().size();
+                    boolean loginFailed = true;
+                    for (int i = 0; i < x; i++) {
+                        String matchingID = chosenEmployer.getEmployees().get(i).getEmployeeID();
+                        String matchPass = chosenEmployer.getEmployees().get(i).getPassword();
+                        if(matchingID.compareToIgnoreCase(employeeID) == 0 && matchPass.compareTo(password) ==0){
+                            MainActivity.currentEmployee = chosenEmployer.getEmployees().get(i);
+                            loginFailed = false;
+                            mListener.EmployeeLoginSuccessful();
+                        }
+                    }
+                    if(loginFailed)
+                    {
+                        Toast.makeText(getActivity(), "credientials incorrect", Toast.LENGTH_LONG).show();
+                    }
+                }
+                else{
+                    Toast.makeText(getActivity(), "company does not exist", Toast.LENGTH_LONG).show();
+                }
 
             }
         });

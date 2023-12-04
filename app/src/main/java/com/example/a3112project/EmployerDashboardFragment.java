@@ -36,19 +36,26 @@ public class EmployerDashboardFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentEmployerDashboardBinding.inflate(inflater, container, false);
-        return binding.getRoot();    }
+        return binding.getRoot();
+    }
 
     EmployeeAdapter adapter;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle("Employer Dashboard");
+        getActivity().setTitle("Welcome " +MainActivity.currentEmployer.getCompanyName() +"!");
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new EmployeeAdapter();
         binding.recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
 
+        binding.buttonEmployerReq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.GoToReq();
+            }
+        });
 
         binding.buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +84,8 @@ public class EmployerDashboardFragment extends Fragment {
     interface EmployerDashboardListener{
         void AddNewEmployee();
         void GoBackHomeFragment4();
+        void GoToReq();
+        void GoToUpdateEmployee();
     }
 
     class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.EmployeeViewHolder>
@@ -109,9 +118,11 @@ public class EmployerDashboardFragment extends Fragment {
             }
             public void setupUI(Employee employee){
                 this.mEmployee = employee;
-                mBinding.textViewEmployeeName.setText(mEmployee.getEmployeeName());
-                mBinding.textViewEmployeeID.setText(mEmployee.getEmployeeID());
-                mBinding.textViewWage.setText(""+mEmployee.getHourlyWage());
+                mBinding.textViewEmployeeName.setText("Employee Name: "+mEmployee.getEmployeeName());
+                mBinding.textViewEmployeeID.setText("Employee ID: "+mEmployee.getEmployeeID());
+                String money =String.format("%.2f", mEmployee.getHourlyWage());
+
+                mBinding.textViewWage.setText("Wage Per Hour: $"+money);
 
                 mBinding.imageViewDelete.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -123,7 +134,8 @@ public class EmployerDashboardFragment extends Fragment {
                 mBinding.cardViewEvent.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        MainActivity.employeeUpdating = employee;
+                        mListener.GoToUpdateEmployee();
                     }
                 });
 

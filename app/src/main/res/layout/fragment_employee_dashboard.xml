@@ -1,14 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EmployeeDashboardFragment">
+    tools:context=".EmployeeDashboardFragment"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
+    <Button
+        android:id="@+id/buttonEmployeeRequest"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:text="Log Hours"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTotalMoneyEarned" />
+
+    <Button
+        android:id="@+id/buttonLogoutEmployee"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Logout"
+        app:layout_constraintEnd_toEndOf="@+id/buttonEmployeeRequest"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/buttonEmployeeRequest"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEmployeeRequest" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Employee Dashboard" />
+        android:id="@+id/textViewWelcomeEmployee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:text="Welcome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textView7EmployeeID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWelcomeEmployee"
+        tools:text="Employee ID" />
+
+    <TextView
+        android:id="@+id/textView8CompanyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintEnd_toEndOf="@+id/textView9EmployeeWage"
+        app:layout_constraintStart_toStartOf="@+id/textView9EmployeeWage"
+        app:layout_constraintTop_toBottomOf="@+id/textView9EmployeeWage"
+        tools:text="Company Name" />
+
+    <TextView
+        android:id="@+id/textViewTotalMoneyEarned"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintEnd_toEndOf="@+id/textView9EmployeeWage"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView9EmployeeWage"
+        app:layout_constraintTop_toBottomOf="@+id/textView8CompanyName"
+        tools:text="Money Earned" />
+
+    <TextView
+        android:id="@+id/textView9EmployeeWage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintEnd_toEndOf="@+id/textView7EmployeeID"
+        app:layout_constraintStart_toStartOf="@+id/textView7EmployeeID"
+        app:layout_constraintTop_toBottomOf="@+id/textView7EmployeeID"
+        tools:text="Employee wage" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,70 +8,70 @@
     android:padding="16dp"
     tools:context=".EmployeeLoginFragment" >
 
+
     <EditText
-        android:id="@+id/editTextEmployeeID"
+        android:id="@+id/editTextUpdateEmployeeWage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Employee ID"
+        android:hint="Enter Hourly Wage"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUpdatePassword" />
+
+    <EditText
+        android:id="@+id/editTextUpdateEmployeeUsername"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Update Employee Name"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCompanyNameEmployee" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewUpdateEmployee" />
 
     <EditText
-        android:id="@+id/editTextCompanyNameEmployee"
+        android:id="@+id/editTextUpdatePassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Company Name"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Password"
+        android:hint="Update Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmployeeID" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateEmployeeUsername" />
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/buttonUpdateEmployee"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Login"
+        android:layout_marginTop="8dp"
+        android:text="Update Employee"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateEmployeeWage" />
 
     <Button
-        android:id="@+id/buttonGoHomeFragment"
+        android:id="@+id/buttonGoEmployeeDashboard"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
         android:text="Cancel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+        app:layout_constraintEnd_toEndOf="@+id/buttonUpdateEmployee"
+        app:layout_constraintTop_toBottomOf="@+id/buttonUpdateEmployee" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewUpdateEmployee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Employee Login"
-        app:layout_constraintEnd_toEndOf="@+id/editTextEmployeeID"
-        app:layout_constraintStart_toStartOf="@+id/editTextEmployeeID"
+        android:text="Update Employee"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

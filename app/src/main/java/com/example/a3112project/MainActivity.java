@@ -12,11 +12,17 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements HomeFragment.HomeListener,
         EmployerLoginFragment.EmployerLoginListener, EmployerCreateAccountFragment.EmployerCreateAccount,
         EmployeeLoginFragment.EmployeeLoginListener, EmployerDashboardFragment.EmployerDashboardListener,
-        AddEmployeeFragment.AddEmployeeListener
+        AddEmployeeFragment.AddEmployeeListener, EmployeeDashboardFragment.EmployeeDashboardListener,
+        EmployeeViewAcceptedRequestFragment.EmployeeLogHours, EmployeeRequestFragment.EmployeeRequestListener,
+        EmployerRequestFragment.EmployerRequestListener, UpdateEmployeeProfileFragment.UpdateEmployeeListener
 {
     public static ArrayList<Employer> employers = new ArrayList<>();
     public static ArrayList<Employee> employees = new ArrayList<>();
     public static Employer currentEmployer = new Employer();
+    public static Employee currentEmployee = new Employee();
+
+    public static Employee employeeUpdating = new Employee();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -120,6 +126,22 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
     }
 
     @Override
+    public void GoToReq() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, new EmployerRequestFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void GoToUpdateEmployee() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, new UpdateEmployeeProfileFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
     public void AddNewEmployeeFinish() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.rootView, new EmployerDashboardFragment())
@@ -129,6 +151,79 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.Home
 
     @Override
     public void GoBackEmployerDashboard() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, new EmployerDashboardFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void LogoutEmployee() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, new HomeFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void EmployeeReview() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, new EmployeeViewAcceptedRequestFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void goBackEmployeeDashboard2() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, new EmployeeDashboardFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void AddWeekHours() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, new EmployeeRequestFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void SubmitRequest() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, new EmployeeViewAcceptedRequestFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void GoBackAllRequests() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, new EmployeeViewAcceptedRequestFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void GoBackEmployerDashboard4() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, new EmployerDashboardFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+
+    @Override
+    public void GoBackEmployerDashboard20() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, new EmployerDashboardFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void UpdateEmployee() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.rootView, new EmployerDashboardFragment())
                 .addToBackStack(null)

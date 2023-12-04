@@ -85,6 +85,7 @@ public class AddEmployeeFragment extends Fragment {
                         createdEmployee.setPassword(employeePassword);
                         createdEmployee.setHourlyWage(realWage);
                         createdEmployee.setCompanyName(MainActivity.currentEmployer.getCompanyName());
+                        createdEmployee.setEmployer(MainActivity.currentEmployer);
                         Log.d("TAG", createdEmployee.toString());
                         MainActivity.currentEmployer.getEmployees().add(createdEmployee);
                         mListener.AddNewEmployeeFinish();
